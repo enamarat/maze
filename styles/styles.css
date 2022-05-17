@@ -44,4 +44,19 @@ h2 {
     fill: yellow;
 }
 
+/** Buttons **/
+#restartGameButton {
+    display: none;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: rgb(65, 32, 211);
+    color: rgb(196, 205, 21);
+    border-radius: 25% 25%; 
+    font-size: 1.5em;
+    padding: 5px;
+}
+
+#restartGameButton:hover {
+    color:rgb(242, 242, 17)
+}
 

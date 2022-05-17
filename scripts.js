@@ -24,29 +24,29 @@ const levels = [
             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ],
         exit: [0,18],
-        playerCurrentPos: [0,1]
+        playerStartPos: [0,1]
     },
     {
         maze: [
-            [1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1],
-            [1,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1],
-            [1,1,1,1,0,0,0,1,0,1,1,1,1,0,1,0,1,1,0,1],
-            [1,1,0,0,0,1,1,1,0,1,1,0,0,0,1,0,0,1,0,1],
-            [1,1,1,1,0,0,0,1,0,1,0,0,1,1,1,1,0,1,0,1],
-            [1,1,0,0,0,1,1,1,0,1,0,1,1,0,0,1,0,1,0,1],
-            [1,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,0,1,0,1],
-            [1,0,1,1,0,1,0,1,0,1,0,1,0,1,0,0,0,1,1,1],
-            [1,0,0,1,0,0,0,0,0,1,0,0,0,1,1,1,0,1,0,1],
-            [1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,0,0,0,1],
-            [1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1],
+            [1,0,1,0,1,0,1,1,0,1,1,1,1,0,1,0,1,1,0,1],
+            [1,0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,0,0,1],
+            [1,0,1,1,0,0,0,1,0,0,0,0,1,1,0,1,0,1,0,1],
+            [1,0,0,0,0,1,0,1,0,1,0,1,1,0,0,1,1,1,0,1],
+            [0,0,1,1,0,1,0,0,0,1,0,1,0,1,0,1,0,0,0,1],
+            [1,0,1,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1,1,1],
+            [1,0,0,0,0,0,0,0,0,1,0,0,0,1,1,1,0,0,0,1],
+            [1,0,1,1,1,1,1,1,0,1,0,1,0,1,1,0,1,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,0,0],
             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ],
-        exit: [0,18],
-        playerCurrentPos: [6,1]
+        exit: [10,19],
+        playerStartPos: [6,0]
     },
 ];
 let currentLevel = 1;
-let playerCurrentPos = levels[currentLevel-1].playerCurrentPos;
+let playerCurrentPos = null;
 let previousPos = [];
 let step = 0; 
 
@@ -55,6 +55,7 @@ let pt = svg.createSVGPoint();
 
 
 const drawMaze = (mazeScheme, wallsSize) => {
+    playerCurrentPos = [...levels[currentLevel-1].playerStartPos];
     let walls = `<rect width=${1000} height=${1000} x="0" y="0" fill="#FFF" stroke="none" stroke-width="5"/>`;
     for (let i = 0; i < mazeScheme.length; i++) {
         for (let j = 0; j < mazeScheme[i].length; j++) {
@@ -64,7 +65,7 @@ const drawMaze = (mazeScheme, wallsSize) => {
         }
     }
     // add a player
-    walls +=`<circle cx=${(wallsSize*playerCurrentPos[1]) + wallsSize/2} cy=${(wallsSize*playerCurrentPos[0]) + wallsSize/2} r=${wallsSize/2-6} fill="#EF5F3E" stroke="none" stroke-width="5" id="player"/>`;
+    walls +=`<circle cx=${(wallsSize*levels[currentLevel-1].playerStartPos[1]) + wallsSize/2} cy=${(wallsSize*levels[currentLevel-1].playerStartPos[0]) + wallsSize/2} r=${wallsSize/2-6} fill="#EF5F3E" stroke="none" stroke-width="5" id="player"/>`;
     // define step
     step = wallsSize;
     document.querySelector("#maze").innerHTML = walls;
@@ -78,7 +79,7 @@ const movePlayerWithArrows = (event) => {
     if (event.key == 'ArrowUp') {
         if (levels[currentLevel-1].maze[playerCurrentPos[0]-1] != undefined
             && levels[currentLevel-1].maze[playerCurrentPos[0]-1][playerCurrentPos[1]] == 0) {
-            previousPos = [...playerCurrentPos];
+            //previousPos = [...playerCurrentPos];
             playerCurrentPos[0] -= 1;
             player.style.cy = step * playerCurrentPos[0] + step/2 + 'px';
            // leaveTrail(50);
@@ -86,7 +87,7 @@ const movePlayerWithArrows = (event) => {
     } else if (event.key == 'ArrowDown') {
         if (levels[currentLevel-1].maze[playerCurrentPos[0]+1] != undefined 
             && levels[currentLevel-1].maze[playerCurrentPos[0]+1][playerCurrentPos[1]] == 0) {
-            previousPos = [...playerCurrentPos];
+           // previousPos = [...playerCurrentPos];
             playerCurrentPos[0] += 1;
             player.style.cy = step * playerCurrentPos[0] + step/2 + 'px';
            // leaveTrail(50);
@@ -94,7 +95,7 @@ const movePlayerWithArrows = (event) => {
     } else if (event.key == 'ArrowLeft') {
       if (levels[currentLevel-1].maze[playerCurrentPos[0]][playerCurrentPos[1]-1] != undefined
           && levels[currentLevel-1].maze[playerCurrentPos[0]][playerCurrentPos[1]-1] == 0) {
-           previousPos = [...playerCurrentPos];
+          // previousPos = [...playerCurrentPos];
            playerCurrentPos[1] -= 1;
            player.style.cx = step * playerCurrentPos[1] + step/2 + 'px';
            //leaveTrail(50);
@@ -102,7 +103,7 @@ const movePlayerWithArrows = (event) => {
     } else if (event.key == 'ArrowRight') {
         if (levels[currentLevel-1].maze[playerCurrentPos[0]][playerCurrentPos[1]+1] != undefined 
             && levels[currentLevel-1].maze[playerCurrentPos[0]][playerCurrentPos[1]+1] == 0) {
-            previousPos = [...playerCurrentPos];
+           // previousPos = [...playerCurrentPos];
             playerCurrentPos[1] += 1;
             player.style.cx = step * playerCurrentPos[1] + step/2 + 'px';
             //leaveTrail(50);
@@ -110,7 +111,7 @@ const movePlayerWithArrows = (event) => {
     }
 
 
-    // check whether a player hasa reached the exit
+    // check whether a player has reached the exit
     if (playerCurrentPos[0] === levels[currentLevel-1].exit[0] && playerCurrentPos[1] === levels[currentLevel-1].exit[1]) {
         window.setTimeout(() => {
             let victoryMessage = `<rect width=${1000} height=${100} x=${0} y=${300-50} fill="#1fde99" stroke="#1fde99" stroke-width="5" id="victoryMessage"/>`
@@ -123,6 +124,32 @@ const movePlayerWithArrows = (event) => {
     }
 }
 
+const changeLevel = () => {
+    if (currentLevel-1 < levels.length-1) {
+        currentLevel++;
+        document.querySelector("#maze").innerHTML = "";
+        document.querySelector("#level").textContent = `Level ${currentLevel}`;
+        playerCurrentPos = levels[currentLevel-1].playerStartPos;
+        drawMaze(levels[currentLevel-1].maze, 50);
+    } else if (currentLevel-1 == levels.length-1) {
+        document.querySelector("#level").textContent = `Last level completed!`;
+        document.querySelector("#maze").innerHTML = "";
+        document.querySelector('.container').style.display = "none";
+        document.querySelector('#restartGameButton').style.display = "block";
+    }
+}
+
+const restartGame = () => {
+    currentLevel = 1;
+    document.querySelector("#level").textContent = `Level ${currentLevel}`;
+    document.querySelector("#maze").innerHTML = "";
+    playerCurrentPos = [...levels[currentLevel-1].playerStartPos];
+    document.querySelector('.container').style.display = "flex";
+    document.querySelector('#restartGameButton').style.display = "none";
+    drawMaze(levels[currentLevel-1].maze, 50)
+}
+
+// optional functions; I may delete them later
 const leaveTrail = (wallsSize) => {
     let trail = null;
      
@@ -135,22 +162,6 @@ const leaveTrail = (wallsSize) => {
     }
      
     document.querySelector("#maze").innerHTML += trail;
-}
-
-const changeLevel = () => {
-    if (currentLevel-1 < levels.length-1) {
-        currentLevel++;
-        document.querySelector("#maze").innerHTML = "";
-        document.querySelector("#level").textContent = `Level ${currentLevel}`;
-        playerCurrentPos = levels[currentLevel-1].playerCurrentPos;
-        drawMaze(levels[currentLevel-1].maze, 50);
-    } else if (currentLevel-1 == levels.length-1) {
-        currentLevel = 0;
-        document.querySelector("#level").textContent = `Level ${currentLevel}`;
-        document.querySelector("#maze").innerHTML = "";
-    }
-    
-    
 }
 
 // Move player with a mouse cursor
@@ -184,3 +195,4 @@ document.addEventListener("DOMContentLoaded", () => drawMaze(levels[currentLevel
    // console.log(loc);
 }, false);*/
 window.addEventListener("keydown", movePlayerWithArrows);
+document.querySelector("#restartGameButton").addEventListener('click', restartGame);
