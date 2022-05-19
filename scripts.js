@@ -1,23 +1,14 @@
-/*const maze = [
-    [1,0,1,1,1,1,1,1,1,1],
-    [1,0,0,1,0,1,0,0,0,1],
-    [1,0,1,1,0,0,0,1,0,1],
-    [1,0,0,0,0,1,1,1,0,1],
-    [1,1,1,1,0,0,0,1,0,1],
-    [1,1,1,1,1,1,1,1,0,1]
-];*/
-
 const levels = [
     {
         maze: [
             [1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1],
-            [1,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1],
-            [1,0,1,1,0,0,0,1,0,1,1,1,1,0,1,0,1,1,0,1],
-            [1,0,0,0,0,1,1,1,0,1,1,0,0,0,1,0,0,1,0,1],
+            [1,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,1],
+            [1,0,1,1,0,0,0,1,0,1,1,1,1,0,0,0,1,1,0,1],
+            [1,0,0,0,0,1,1,1,0,1,1,0,0,0,1,1,0,0,0,1],
             [1,1,1,1,0,0,0,1,0,1,0,0,1,1,1,1,0,1,0,1],
-            [1,1,0,0,0,1,1,1,0,1,0,1,1,0,0,1,0,1,0,1],
-            [1,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,0,1,0,1],
-            [1,0,1,1,0,1,0,1,0,1,0,1,0,1,0,0,0,1,1,1],
+            [1,1,0,0,0,1,1,1,0,1,0,1,1,0,0,0,0,1,0,1],
+            [1,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,0,1,1,1],
+            [1,0,1,1,0,1,0,1,0,1,0,1,0,1,0,0,0,1,0,1],
             [1,0,0,1,0,0,0,0,0,1,0,0,0,1,1,1,0,1,0,1],
             [1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,0,0,0,1],
             [1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1,1],
@@ -31,12 +22,12 @@ const levels = [
             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1],
             [1,0,1,0,1,0,1,1,0,1,1,1,1,0,1,0,1,1,0,1],
-            [1,0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,1,0,1],
             [1,0,1,1,0,0,0,1,0,0,0,0,1,1,0,1,0,1,0,1],
             [1,0,0,0,0,1,0,1,0,1,0,1,1,0,0,1,1,1,0,1],
             [0,0,1,1,0,1,0,0,0,1,0,1,0,1,0,1,0,0,0,1],
-            [1,0,1,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1,1,1],
-            [1,0,0,0,0,0,0,0,0,1,0,0,0,1,1,1,0,0,0,1],
+            [1,0,1,1,0,1,0,1,0,0,0,1,0,1,0,0,0,1,1,1],
+            [1,0,0,0,0,0,0,0,0,1,0,0,0,1,1,1,0,0,1,1],
             [1,0,1,1,1,1,1,1,0,1,0,1,0,1,1,0,1,0,0,1],
             [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,0,0],
             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
@@ -75,6 +66,14 @@ const drawMaze = (mazeScheme, wallsSize) => {
 const movePlayerWithArrows = (event) => {
     const player = document.querySelector('#player');
     player.style.transition = "0.5s";
+
+    if (currentLevel == 'finish') {
+        return false;
+    }
+
+    if (playerCurrentPos[0] === levels[currentLevel-1].exit[0] && playerCurrentPos[1] === levels[currentLevel-1].exit[1]) {
+        return false;
+    }
 
     if (event.key == 'ArrowUp') {
         if (levels[currentLevel-1].maze[playerCurrentPos[0]-1] != undefined
@@ -132,10 +131,11 @@ const changeLevel = () => {
         playerCurrentPos = levels[currentLevel-1].playerStartPos;
         drawMaze(levels[currentLevel-1].maze, 50);
     } else if (currentLevel-1 == levels.length-1) {
+        currentLevel = "finish";
         document.querySelector("#level").textContent = `Last level completed!`;
         document.querySelector("#maze").innerHTML = "";
         document.querySelector('.container').style.display = "none";
-        document.querySelector('#restartGameButton').style.display = "block";
+        document.querySelector("#victory").style.display = "block";
     }
 }
 
@@ -145,8 +145,8 @@ const restartGame = () => {
     document.querySelector("#maze").innerHTML = "";
     playerCurrentPos = [...levels[currentLevel-1].playerStartPos];
     document.querySelector('.container').style.display = "flex";
-    document.querySelector('#restartGameButton').style.display = "none";
-    drawMaze(levels[currentLevel-1].maze, 50)
+    document.querySelector("#victory").style.display = "none";
+    drawMaze(levels[currentLevel-1].maze, 50);
 }
 
 // optional functions; I may delete them later

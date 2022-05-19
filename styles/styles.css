@@ -46,17 +46,175 @@ h2 {
 
 /** Buttons **/
 #restartGameButton {
-    display: none;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
     background-color: rgb(65, 32, 211);
     color: rgb(196, 205, 21);
-    border-radius: 25% 25%; 
+    border-radius: 5% 5%; 
     font-size: 1.5em;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 10px 5px 5px black;
+    position: absolute;
+    z-index: 2;
+    top: calc(50% - 5px);
+    left: calc(50% - 10px);
 }
 
 #restartGameButton:hover {
     color:rgb(242, 242, 17)
+}
+
+/*** Victory ***/
+#victory {
+    margin-top: 0.5em;
+    width: 70%;
+    height: 300px;
+    position: relative;
+    display: none;
+}
+
+#victoryMessage {
+    color: rgb(239, 229, 42);
+    font-size: 2.5em;
+    position: absolute;
+    top: calc(50% - 60px);
+    left: calc(50% - 60px);
+    z-index: 3;
+}
+
+
+/*** Animations ***/
+@keyframes slideRight {
+    0% {
+        width: 50%;
+        left: 0%;
+        background-color: skyblue;
+    }
+
+    100% {
+        width: 75%;
+        left: calc(100% - 75%);
+        background-color: rgb(68, 255, 0);
+    }
+}
+
+@-webkit-keyframes slideRight {
+    0% {
+        width: 50%;
+        left: 0%;
+        background-color: skyblue;
+    }
+
+    100% {
+        width: 75%;
+        left: calc(100% - 75%);
+        background-color: rgb(68, 255, 0);
+    }
+}
+
+#stripeTop {
+    background-color: skyblue;
+    width: 75%;
+    height: 50px;
+    position: absolute;
+    left: calc(100% - 75%);
+    animation-name: slideRight;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    -webkit-animation-name: slideRight;
+    -webkit-animation-duration: 1.5s;
+}
+
+@keyframes slideLeft {
+    0% {
+        width: 50%;
+        right: 0%;
+        background-color: skyblue;
+    }
+
+    100% {
+        width: 75%;
+        right: calc(100% - 75%);
+        background-color: rgb(68, 255, 0);
+    }
+}
+
+@-webkit-keyframes slideLeft {
+    0% {
+        width: 50%;
+        right: 0%;
+        background-color: skyblue;
+    }
+
+    100% {
+        width: 75%;
+        right: calc(100% - 75%);
+        background-color: rgb(68, 255, 0);
+    }
+}
+
+#stripeDown {
+    background-color: skyblue;
+    width: 75%;
+    height: 50px;
+    position: absolute;
+    top: calc(100% - 50px);
+    right: calc(100% - 75%);
+    animation-name: slideLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    -webkit-animation-name: slideLeft;
+    -webkit-animation-duration: 1.5s;
+}
+
+
+@keyframes moveRight {
+    0% {
+        left: 0%;
+    }
+
+    100% {
+        left: calc(50% - 75px);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes moveRight {
+    0% {
+        left: 0%;
+    }
+
+    100% {
+        left: calc(50% - 75px);
+        transform: rotate(360deg);
+    }
+}
+
+#circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50% 50%;
+    background-color: tomato;
+    position: absolute;
+    top: calc(50% - 75px);
+    left: calc(50% - 75px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    animation-name: moveRight;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    -webkit-animation-name: moveRight;
+    -webkit-animation-duration: 1.5s;
+}
+
+#circleStripe {
+    width: 10px;
+    height: 75px;
+    background-color: #fff;
 }
 
