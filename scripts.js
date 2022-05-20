@@ -144,8 +144,7 @@ let playerCurrentPos = null;
 let previousPos = [];
 let step = 0;
 let sideBarHidden = true; 
-const svg = document.querySelector('svg');
-let pt = svg.createSVGPoint();
+
 
 const drawMaze = (mazeScheme, wallsSize) => {
     playerCurrentPos = [...levels[currentLevel-1].playerStartPos];
@@ -190,34 +189,26 @@ const movePlayerWithArrows = (event) => {
     if (event.key == 'ArrowUp') {
         if (levels[currentLevel-1].maze[playerCurrentPos[0]-1] != undefined
             && levels[currentLevel-1].maze[playerCurrentPos[0]-1][playerCurrentPos[1]] == 0) {
-            //previousPos = [...playerCurrentPos];
             playerCurrentPos[0] -= 1;
             player.style.cy = step * playerCurrentPos[0] + step/2 + 'px';
-           // leaveTrail(50);
         } 
     } else if (event.key == 'ArrowDown') {
         if (levels[currentLevel-1].maze[playerCurrentPos[0]+1] != undefined 
             && levels[currentLevel-1].maze[playerCurrentPos[0]+1][playerCurrentPos[1]] == 0) {
-           // previousPos = [...playerCurrentPos];
             playerCurrentPos[0] += 1;
             player.style.cy = step * playerCurrentPos[0] + step/2 + 'px';
-           // leaveTrail(50);
         } 
     } else if (event.key == 'ArrowLeft') {
       if (levels[currentLevel-1].maze[playerCurrentPos[0]][playerCurrentPos[1]-1] != undefined
           && levels[currentLevel-1].maze[playerCurrentPos[0]][playerCurrentPos[1]-1] == 0) {
-          // previousPos = [...playerCurrentPos];
            playerCurrentPos[1] -= 1;
            player.style.cx = step * playerCurrentPos[1] + step/2 + 'px';
-           //leaveTrail(50);
        }
     } else if (event.key == 'ArrowRight') {
         if (levels[currentLevel-1].maze[playerCurrentPos[0]][playerCurrentPos[1]+1] != undefined 
             && levels[currentLevel-1].maze[playerCurrentPos[0]][playerCurrentPos[1]+1] == 0) {
-           // previousPos = [...playerCurrentPos];
             playerCurrentPos[1] += 1;
             player.style.cx = step * playerCurrentPos[1] + step/2 + 'px';
-            //leaveTrail(50);
         } 
     }
 
@@ -285,34 +276,6 @@ const loadLevel = (event) => {
     }
 }
 
-// optional functions; I may delete them later
-const leaveTrail = (wallsSize) => {
-    let trail = null;
-    if (maze[previousPos[0]][previousPos[1]] == 0) {
-        trail = `<rect width=${wallsSize-40} height=${wallsSize} x=${previousPos[1]*(wallsSize+20)} y=${previousPos[0]*(wallsSize)} fill="#e9664f" stroke="#e9664f" stroke-width="5"/>`;
-        maze[previousPos[0]][previousPos[1]] = 2;
-    } else if (maze[previousPos[0]][previousPos[1]] == 2) {
-        trail = `<rect width=${wallsSize-40} height=${wallsSize} x=${previousPos[1]*(wallsSize+20)} y=${previousPos[0]*(wallsSize)} fill="#fff" stroke="#fff" stroke-width="5"/>`
-        maze[previousPos[0]][previousPos[1]] = 0;
-    }
-    document.querySelector("#maze").innerHTML += trail;
-}
-
-// Move player with a mouse cursor
-const followCursor = (event) => {
-    const player = document.querySelector('#player');
-   // player.style.left = event.clientX + 'px';
-   // player.style.top = event.clientY + 'px';
-     player.style.cx = event.clientX - 0 + 'px';
-     player.style.cy = event.clientY - 0 + 'px';
-}
-
-const cursirPoint = (event) =>{
-    pt.x = event.clientX;
-    pt.y = event.clientY;
-    return pt.matrixTransform(svg.getScreenCTM().inverse()) 
-}
-
 
 document.addEventListener("DOMContentLoaded", () => {
     fillSideBar();
@@ -322,14 +285,3 @@ window.addEventListener("keydown", movePlayerWithArrows);
 document.querySelector("#restartGameButton").addEventListener('click', restartGame);
 document.querySelector("#levelsButton").addEventListener('click', showLevels);
 document.querySelector('#levelsDiv').addEventListener('click', loadLevel);
-
-
-//document.querySelector('#maze').addEventListener('mousemove', followCursor);
-/*svg.addEventListener('mousemove', (event) => {
-    const loc = cursirPoint(event);
-    const player = document.querySelector('#player');
-
-    player.style.cx = loc.x  + 'px';
-    player.style.cy = loc.y  + 'px';
-   // console.log(loc);
-}, false);*/
