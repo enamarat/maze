@@ -14,13 +14,14 @@ const levels = [
             [1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1,1],
             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ],
+        wallsSize: 50,
         exit: [0,18],
         playerStartPos: [0,1]
     },
     {
         maze: [
             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1],
             [1,0,1,0,1,0,1,1,0,1,1,1,1,0,1,0,1,1,0,1],
             [1,0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,1,0,1],
             [1,0,1,1,0,0,0,1,0,0,0,0,1,1,0,1,0,1,0,1],
@@ -32,18 +33,119 @@ const levels = [
             [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,0,0],
             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ],
+        wallsSize: 50,
         exit: [10,19],
         playerStartPos: [6,0]
     },
+    {
+        maze: [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,1],
+            [1,0,0,0,1,1,1,1,1,0,0,0,1,0,0,0,0,1,0,1],
+            [1,1,1,1,1,0,0,0,1,0,1,1,0,0,1,1,0,0,0,1],
+            [1,0,1,0,0,0,1,0,0,1,0,0,1,1,0,0,1,0,1,1],
+            [1,0,1,1,0,1,1,1,1,0,0,1,0,0,0,1,1,0,0,1],
+            [1,0,0,0,0,0,0,0,0,1,0,1,0,1,0,1,1,1,0,1],
+            [1,0,1,1,0,1,1,1,0,0,0,0,0,1,0,0,1,0,0,1],
+            [1,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,1,0,1,1],
+            [1,0,1,1,0,1,1,1,0,1,0,0,0,1,1,0,0,0,0,1],
+            [1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,1,0,1],
+            [1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ],
+        wallsSize: 50,
+        exit: [1,0],
+        playerStartPos: [11,1]
+    },
+    {
+        maze: [
+            [1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1],
+            [1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,0,1],
+            [1,1,0,1,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,1],
+            [1,0,1,0,0,0,1,0,0,0,1,0,0,1,1,1,0,1,0,1],
+            [1,0,1,1,0,1,1,1,1,1,0,1,0,0,0,1,0,0,0,1],
+            [1,0,0,1,0,0,1,0,0,0,0,1,1,1,0,1,1,1,0,1],
+            [1,1,0,1,0,1,1,1,0,1,0,0,0,1,0,0,1,0,0,1],
+            [1,0,0,0,0,1,0,0,0,1,1,0,1,0,0,1,1,0,1,1],
+            [1,0,1,1,0,1,0,1,0,1,0,0,1,0,1,0,0,0,1,1],
+            [1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ],
+        wallsSize: 50,
+        exit: [0,2],
+        playerStartPos: [6,7]
+    },
+    {
+        maze: [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1],
+            [1,0,1,0,0,0,0,0,0,1,1,0,0,0,1,1,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1],
+            [1,0,0,0,1,0,1,1,0,1,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1],
+            [1,0,1,0,1,1,1,1,0,0,0,1,1,1,0,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,1],
+            [1,0,1,0,0,0,0,1,0,1,0,0,0,0,0,1,1,0,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,0,0,0,1,0,1],
+            [1,0,1,1,1,1,0,0,0,1,1,0,1,1,1,1,0,0,1,1,1,0,0,1,0,1,0,0,0,0,0,0,1,1,0,1,1,1,0,1],
+            [1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,1,0,0,0,1,1,0,1,0,1,1,1,0,1,1,1,0,0,0,0,0,1],
+            [1,0,1,1,0,1,1,1,0,1,0,1,0,1,1,1,1,1,1,0,1,1,1,1,0,1,0,1,0,1,0,0,1,1,0,1,1,1,0,1],
+            [1,0,1,0,0,0,0,1,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,1],
+            [1,0,1,0,1,1,1,1,0,0,0,1,0,1,0,1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,0,1,1,1,1,0,1],
+            [1,0,1,0,1,0,0,0,1,1,0,1,0,1,0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,1,0,0,1,0,0,0,1],
+            [1,0,1,0,1,0,1,0,1,1,0,1,0,1,0,1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,0,1,0,1,1,1],
+            [1,0,1,0,1,0,1,0,0,0,0,1,0,1,0,1,0,0,1,0,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,1,0,1],
+            [1,0,1,0,0,0,1,0,1,0,1,1,0,0,0,1,0,1,0,1,0,0,1,1,1,1,0,1,0,1,1,1,0,1,1,1,0,1,0,1],
+            [1,0,1,1,1,1,1,0,1,0,1,1,1,1,1,1,0,1,0,1,1,0,0,0,0,0,0,1,0,1,1,1,0,1,0,0,0,1,0,1],
+            [1,0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,0,1,0,1,0,1,0,0,1,1,1,1,0,0,1,0,0,1,0,1,1,1,0,1],
+            [1,0,1,1,0,0,0,0,1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,1,1,1,0,1,0,1,1,0,1,1,0,0,0,0,0,1],
+            [1,0,1,1,1,1,0,1,1,0,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,1,0,1,1,1,0,1],
+            [1,0,0,0,1,0,0,0,0,1,0,1,0,0,0,1,1,1,0,1,1,1,1,1,1,1,0,1,0,1,1,0,1,1,0,0,0,1,0,1],
+            [1,0,1,1,0,0,1,1,0,1,0,0,0,1,0,1,1,0,0,1,1,0,0,0,0,0,0,1,1,1,1,0,0,0,1,1,0,1,0,1],
+            [1,0,0,0,0,1,1,1,0,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,1,0,0,0,0,0,1,1,0,1,0,0,1,0,1],
+            [1,0,1,1,0,1,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1,0,1,1,0,1],
+            [1,0,0,0,0,0,0,0,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ],
+        wallsSize: 25,
+        exit: [0,35],
+        playerStartPos: [23,1]
+    },
+    // to do
+    /*{
+        maze: [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ],
+        wallsSize: 25,
+        exit: [0,35],
+        playerStartPos: [23,1]
+    },*/
 ];
 let currentLevel = 1;
 let playerCurrentPos = null;
 let previousPos = [];
-let step = 0; 
-
+let step = 0;
+let sideBarHidden = true; 
 const svg = document.querySelector('svg');
 let pt = svg.createSVGPoint();
-
 
 const drawMaze = (mazeScheme, wallsSize) => {
     playerCurrentPos = [...levels[currentLevel-1].playerStartPos];
@@ -60,6 +162,16 @@ const drawMaze = (mazeScheme, wallsSize) => {
     // define step
     step = wallsSize;
     document.querySelector("#maze").innerHTML = walls;
+}
+
+
+const fillSideBar = () => {
+    let content = '<ul>';
+    for (let i = 0; i < levels.length; i++) {
+        content += `<li id='${i+1}' class='levelName'>Level ${i+1}</li>`;
+    }
+    content += '</ul>'
+    document.querySelector('#levelsDiv').innerHTML += content;
 }
 
 
@@ -109,7 +221,6 @@ const movePlayerWithArrows = (event) => {
         } 
     }
 
-
     // check whether a player has reached the exit
     if (playerCurrentPos[0] === levels[currentLevel-1].exit[0] && playerCurrentPos[1] === levels[currentLevel-1].exit[1]) {
         window.setTimeout(() => {
@@ -129,7 +240,7 @@ const changeLevel = () => {
         document.querySelector("#maze").innerHTML = "";
         document.querySelector("#level").textContent = `Level ${currentLevel}`;
         playerCurrentPos = levels[currentLevel-1].playerStartPos;
-        drawMaze(levels[currentLevel-1].maze, 50);
+        drawMaze(levels[currentLevel-1].maze, levels[currentLevel-1].wallsSize);
     } else if (currentLevel-1 == levels.length-1) {
         currentLevel = "finish";
         document.querySelector("#level").textContent = `Last level completed!`;
@@ -146,13 +257,37 @@ const restartGame = () => {
     playerCurrentPos = [...levels[currentLevel-1].playerStartPos];
     document.querySelector('.container').style.display = "flex";
     document.querySelector("#victory").style.display = "none";
-    drawMaze(levels[currentLevel-1].maze, 50);
+    drawMaze(levels[currentLevel-1].maze, levels[currentLevel-1].wallsSize);
+}
+
+const showLevels = () => {
+    if (sideBarHidden) {
+        document.querySelector('#levelsDiv ul').style.display = 'block';
+        document.querySelector('#levelsDiv').style.width = '250px';
+        sideBarHidden = false;
+        document.querySelector('#levelsButton').textContent = 'X';
+    } else {
+        document.querySelector('#levelsDiv ul').style.display = 'none';
+        document.querySelector('#levelsDiv').style.width = '0';
+        sideBarHidden = true;
+        document.querySelector('#levelsButton').textContent = 'Levels';
+    }
+}
+
+const loadLevel = (event) => {
+    if (event.target.className == 'levelName') {
+        currentLevel = event.target.id;
+        document.querySelector("#level").textContent = `Level ${currentLevel}`;
+        playerCurrentPos = [...levels[currentLevel-1].playerStartPos];
+        document.querySelector('.container').style.display = "flex";
+        document.querySelector("#victory").style.display = "none";
+        drawMaze(levels[currentLevel-1].maze, levels[currentLevel-1].wallsSize);
+    }
 }
 
 // optional functions; I may delete them later
 const leaveTrail = (wallsSize) => {
     let trail = null;
-     
     if (maze[previousPos[0]][previousPos[1]] == 0) {
         trail = `<rect width=${wallsSize-40} height=${wallsSize} x=${previousPos[1]*(wallsSize+20)} y=${previousPos[0]*(wallsSize)} fill="#e9664f" stroke="#e9664f" stroke-width="5"/>`;
         maze[previousPos[0]][previousPos[1]] = 2;
@@ -160,7 +295,6 @@ const leaveTrail = (wallsSize) => {
         trail = `<rect width=${wallsSize-40} height=${wallsSize} x=${previousPos[1]*(wallsSize+20)} y=${previousPos[0]*(wallsSize)} fill="#fff" stroke="#fff" stroke-width="5"/>`
         maze[previousPos[0]][previousPos[1]] = 0;
     }
-     
     document.querySelector("#maze").innerHTML += trail;
 }
 
@@ -169,10 +303,8 @@ const followCursor = (event) => {
     const player = document.querySelector('#player');
    // player.style.left = event.clientX + 'px';
    // player.style.top = event.clientY + 'px';
-   
      player.style.cx = event.clientX - 0 + 'px';
      player.style.cy = event.clientY - 0 + 'px';
-    ///console.log(event.clientX, event.clientY);
 }
 
 const cursirPoint = (event) =>{
@@ -182,8 +314,15 @@ const cursirPoint = (event) =>{
 }
 
 
-//document.addEventListener("DOMContentLoaded", () => drawMaze(maze, 100));
-document.addEventListener("DOMContentLoaded", () => drawMaze(levels[currentLevel-1].maze, 50));
+document.addEventListener("DOMContentLoaded", () => {
+    fillSideBar();
+    drawMaze(levels[currentLevel-1].maze, levels[currentLevel-1].wallsSize);
+});
+window.addEventListener("keydown", movePlayerWithArrows);
+document.querySelector("#restartGameButton").addEventListener('click', restartGame);
+document.querySelector("#levelsButton").addEventListener('click', showLevels);
+document.querySelector('#levelsDiv').addEventListener('click', loadLevel);
+
 
 //document.querySelector('#maze').addEventListener('mousemove', followCursor);
 /*svg.addEventListener('mousemove', (event) => {
@@ -194,5 +333,3 @@ document.addEventListener("DOMContentLoaded", () => drawMaze(levels[currentLevel
     player.style.cy = loc.y  + 'px';
    // console.log(loc);
 }, false);*/
-window.addEventListener("keydown", movePlayerWithArrows);
-document.querySelector("#restartGameButton").addEventListener('click', restartGame);

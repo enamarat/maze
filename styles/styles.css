@@ -16,7 +16,7 @@ header {
 }
 
 .container {
-    width: 70%;
+    width: 65%;
     display: flex;
     justify-content: center;
 }
@@ -44,7 +44,35 @@ h2 {
     fill: yellow;
 }
 
+.levelName {
+    font-size: 1.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color:rgb(196, 205, 21);
+}
+
+.levelName:hover {
+    cursor: pointer;
+    color: rgb(242, 242, 17);
+}
+
 /** Buttons **/
+#levelsButton {
+    position: absolute;
+    z-index: 5;
+    top: 0%;
+    left: 0%;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: rgb(65, 32, 211);
+    color: #fff;
+}
+
+#levelsButton:hover { 
+    color: rgb(196, 205, 21);
+    cursor: pointer;
+}
+
 #restartGameButton {
     background-color: rgb(65, 32, 211);
     color: rgb(196, 205, 21);
@@ -62,7 +90,28 @@ h2 {
 }
 
 #restartGameButton:hover {
-    color:rgb(242, 242, 17)
+    color:rgb(242, 242, 17);
+    cursor: pointer;
+}
+
+/*** Levels div ***/
+#levelsDiv {
+    transition: 0.5s;
+    background-color: rgb(233, 35, 78);
+    color: #fff;
+    width: 0;
+    min-height: 100vh;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#levelsDiv ul {
+    display: none;
 }
 
 /*** Victory ***/
