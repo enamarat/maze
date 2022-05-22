@@ -56,6 +56,46 @@ h2 {
     color: rgb(242, 242, 17);
 }
 
+#hint {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    margin-right: 50px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#hint p {
+    color:rgb(65, 32, 211);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#hint p:hover {
+  cursor: pointer;
+  color:rgb(233, 35, 78);
+}
+
+/** Hint description **/
+#hintDescription {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    width: 200px;
+    left: -300%;
+    background-color:rgb(233, 35, 78);
+    padding: 10px;
+}
+
+#hintDescription p {
+    color:rgb(242, 242, 17);
+    font-size: 1.5em;
+}
+
+#hint:hover > #hintDescription {
+    display: block;
+  }
+
 /** Buttons **/
 #levelsButton {
     position: absolute;
