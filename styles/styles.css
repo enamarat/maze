@@ -17,6 +17,7 @@ header {
 
 .container {
     width: 65%;
+    height: 80vh;
     display: flex;
     justify-content: center;
 }
@@ -94,7 +95,7 @@ h2 {
 
 #hint:hover > #hintDescription {
     display: block;
-  }
+}
 
 /** Buttons **/
 #levelsButton {
